@@ -1,0 +1,65 @@
+@import '../../styles/mixins.scss';
+
+.dropdown {
+  display: flex;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  width: 200px;
+  border-right: 1px solid rgba(0, 0, 0, 0.4);
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 15px;
+    text-align: left;
+    border: 0;
+    background: transparent;
+    outline: none;
+    width: 100%;
+    padding: 0 5px;
+    position: relative;
+    cursor: pointer;
+
+    &.expanded {
+      .dropdown__arrow {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &__options {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background: white;
+    box-shadow: 0 0 10px 0px rgb(0 0 0 / 15%);
+    display: none;
+
+    &.show {
+      display: block;
+    }
+
+    li {
+      padding: 6px 10px;
+
+      &:active,
+      &:focus,
+      &:hover,
+      &[aria-selected="true"] {
+        background: rgb(0 0 0 / 6%);
+        cursor: pointer;
+      }
+    }
+  }
+
+  @include for-phone {
+    width: 50%;
+  }
+}
